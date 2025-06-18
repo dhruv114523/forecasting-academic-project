@@ -1,0 +1,45 @@
+---
+title: "Electricity Consumption Time Series Analysis - Malaysia"
+author: "Your Name"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r, echo=TRUE, warning=FALSE, message=FALSE}
+
+library(tidyverse)
+library(tsibble)
+library(forecast)
+
+df <- read_csv("C:/Users/Dhruv/Downloads/electricity_consumption.csv")
+
+df_total <- df %>%
+  filter(sector == "total") %>%
+  mutate(date = as.Date(date)) %>%
+  select(date, consumption) %>%
+  as_tsibble(index = date)
+
+ts_data <- ts(df_total$consumption, start = c(2018, 1), frequency = 12)
+
+# 1. Time Series Plot
+autoplot(df_total, consumption) +
+  ggtitle("Time Series Plot of Electricity Consumption") +
+  ylab("Consumption (MWh)") +
+  xlab("Date")
+
+# 2. Seasonal Plot (ggseason-style)
+ggseasonplot(ts_data, year.labels = TRUE, year.labels.left = TRUE) +
+  ggtitle("Seasonal Plot: Electricity Consumption by Month") +
+  ylab("Consumption (MWh)") +
+  xlab("Month")
+
+# 3. Monthly Faceted Plot
+df_total %>%
+  mutate(Month = lubridate::month(date, label = TRUE)) %>%
+  ggplot(aes(x = lubridate::year(date), y = consumption)) +
+  geom_line(group = 1, color = "steelblue") +
+  facet_wrap(~ Month, scales = "free_y") +
+  labs(title = "Electricity Consumption by Month (Faceted)",
+       x = "Year", y = "Consumption (MWh)") +
+  theme_minimal()
+```
