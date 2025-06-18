@@ -1,7 +1,7 @@
 ---
 title: "Electricity Consumption Time Series Analysis - Malaysia"
-author: "Your Name"
-date: "`r Sys.Date()`"
+author: "TEAM"
+date: "18-06-2025"
 output: html_document
 ---
 
