@@ -6,3 +6,10 @@ The Drift Model has several advantages over other models. It achieved a Mean Err
 Additionally, the Mean Absolute Percentage Error (MAPE) for the Drift Model is 4.79%, which is relatively low and comparable to the Seasonal_naive model’s 4.35%. This suggests that the Drift Model's forecasts are accurate, with predictions only being off by about 5% on average, which is competitive with other methods.
 
 Overall, the Drift Model's combination of near-zero bias and competitive error metrics makes it a solid choice for this dataset, providing accuracy that is either on par with or better than other models.
+
+| **Sector** | **Model**         | **Type** | **ME**      | **RMSE** | **MAE**  | **MAPE** | 
+|------------|-------------------|----------|-------------|----------|----------|----------|
+| total      | Seasonal_naive     | Training | 1.43e+2     | 874.00   | 604.00   | 4.35%    |
+| total      | Naive              | Training | 1.11e+1     | 868.00   | 664.00   | 4.79%    |
+| total      | Drift              | Training | 4.32e-13    | 868.00   | 664.00   | 4.79%    |
+| total      | Mean               | Training | -9.09e-13   | 701.00   | 550.00   | 3.99%    |
