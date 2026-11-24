@@ -28,5 +28,3 @@ The reported findings in `section 6.md` favor different methods depending on the
 ## Running the analysis
 
 Use R with the `fpp3` package installed. Run `forecasting.R` from the repository directory; it downloads the dataset directly, so an internet connection is required. The R Markdown analysis additionally requires a local `electricity_consumption.csv` file.
-
-**Current script caveat:** the STL-adjusted forecasting block in `forecasting.R` combines `forecasts_stl` even though that object is not defined in the script. As a result, the script currently needs that reference resolved before it can run through all later sections. The R Markdown file also refers to `ts_data` in its seasonal plot without defining it.
