@@ -188,6 +188,10 @@ forecasts_seasonal_naive <- fit_models %>%
   select(seasonal_naive) %>%
   forecast(h = nrow(test_set))
 
+forecasts_stl <- fit_models %>%
+  select(ets_aaa) %>%
+  forecast(h = nrow(test_set))
+
 # Combine the individual forecasts into one data frame
 all_forecasts <- bind_rows(
   forecasts_drift,
